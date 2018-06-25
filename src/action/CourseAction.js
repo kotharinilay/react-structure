@@ -84,27 +84,3 @@ export function getCourseAction(courseId) {
             });
     };
 }
-
-
-
-export const deleteCourseResponse = () => ({
-    type: ActionType.DELETE_COURSE_RESPONSE
-});
-
-
-
-export function deleteCourseAction(courseId) {
-    return (dispatch) => {
-
-        dispatch(ApiCallBeginAction());
-
-        return CourseApi.deleteCourse(courseId)
-            .then(() => {
-                dispatch(deleteCourseResponse());
-            }).then(() => {
-                dispatch(getCoursesAction());
-            }).catch(error => {
-                throw error;
-            });
-    };
-}

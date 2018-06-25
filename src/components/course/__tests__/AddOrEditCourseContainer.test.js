@@ -1,7 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import {AddOrEditCourseContainer} from '../AddOrEditCourseContainer';
+import { AddOrEditCourseContainer } from '../AddOrEditCourseContainer';
 
 
 describe('AddOrEditCourseContainer.test.js', () => {
@@ -10,14 +10,12 @@ describe('AddOrEditCourseContainer.test.js', () => {
         const props = {
             action: {
                 getCourseAction: jest.fn(),
-                getAuthorsAction: jest.fn()
             },
-            authors:[],
-            initialValues: {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''},
-            match: {params: {id:'1'}}
+            initialValues: { id: '', watchHref: '', title: '', authorId: '', length: '', category: '' },
+            match: { params: { id: '1' } }
         };
 
-        const wrapper = shallow(<AddOrEditCourseContainer {...props}/>);
+        const wrapper = shallow(<AddOrEditCourseContainer {...props} />);
         expect(wrapper.length).toEqual(1);
 
         const tree = toJson(wrapper);
@@ -28,5 +26,4 @@ describe('AddOrEditCourseContainer.test.js', () => {
 
 
 
-    
-        
+

@@ -2,7 +2,6 @@ exports[`AddOrEditCourseContainer.test.js renders without crashing 1`] = `
 <div
   className="container">
   <ReduxForm
-    authors={Array []}
     handleCancel={[Function]}
     handleSave={[Function]}
     heading="Add"

@@ -1,7 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import {CourseForm} from '../CourseForm';
+import { CourseForm } from '../CourseForm';
 
 
 
@@ -12,12 +12,11 @@ function setup(heading) {
         reset: jest.fn(),
         submitting: false,
         heading: heading,
-        authors: [],
         handleSave: jest.fn(),
         handleCancel: jest.fn(),
     };
 
-    return shallow(<CourseForm {...props}/>);
+    return shallow(<CourseForm {...props} />);
 }
 
 
@@ -42,6 +41,6 @@ describe('CourseForm.test.js', () => {
         expect(wrapper.find('h1').text()).toEqual('Edit');
     });
 
-    
+
 });
 
