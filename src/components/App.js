@@ -1,27 +1,41 @@
-import React from 'react'
-import { browserHistory, Router } from 'react-router'
-import { Provider } from 'react-redux'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PageNotFound from './common/PageNotFound';
+import Home from './landing/Home';
+import CourseListContainer from './course/CourseListContainer'; // eslint-disable-line import/no-named-as-default
+import AddOrEditCourseContainer from './course/AddOrEditCourseContainer'; // eslint-disable-line import/no-named-as-default
+import About from './About';
+import createBrowserHistory from 'history/createBrowserHistory';
+import HeaderNavContainer from './landing/HeaderNavContainer'; // eslint-disable-line import/no-named-as-default
 
-class App extends React.Component {
-  static propTypes = {
-    store: PropTypes.object.isRequired,
-    routes: PropTypes.object.isRequired,
-  }
 
-  shouldComponentUpdate () {
-    return false
-  }
 
-  render () {
+const history = createBrowserHistory();
+
+
+const App = () => {
     return (
-      <Provider store={this.props.store}>
-        <div style={{ height: '100%' }}>
-          <Router history={browserHistory} children={this.props.routes} />
-        </div>
-      </Provider>
-    )
-  }
-}
+        <div >
+            <Router history={history}>
+                <div>
 
-export default App
+                    <HeaderNavContainer />
+
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/courses" component={CourseListContainer} />
+                        <Route exact path="/course" component={AddOrEditCourseContainer} />
+                        <Route path="/course/:id" component={AddOrEditCourseContainer} />
+                        <Route path="/about" component={About} />
+                        <Route component={PageNotFound} />
+                    </Switch>
+
+                </div>
+
+            </Router>
+        </div>
+    );
+};
+
+
+export default App;
